@@ -64,12 +64,12 @@
                 --
 
                 ### 1.5 实用工具
-                - 添加 vue snippets
+                - webstorm 安装 vue snippets
                 - VSCode 安装 Vetur 和 Vue VSCode Snippets
 
                 ---
 
-                ## 2. 最简单的Demo +1
+                ## 2. 最简单的 Demo：+1
 
                 ### `src/main.js` 文件
 
@@ -89,14 +89,28 @@
 
                 --
 
-                ### 本地预览
-                ```
+                ### [本地预览](http://localhost:8081/)
+                ```bash
                 yarn serve
                 ```
 
                 ---
 
-                ## 3. Vue模板
+                ## 3. Vue 优势
+
+                - 数据驱动视图，if data changes -> render(data)
+                - 虚拟 DOM，降低浏览器渲染 DOM 的性能损耗
+                - 单文件组件，方便扩展
+                - 有强大的第三方 UI 库支持，比如 [Vant](https://youzan.github.io/vant/#/zh-CN/)，Element
+                - 文档友好，上手难度不高
+                - 个人开发者，LICENSE 友好
+                - 前端工程化，模块化，方便构建复杂应用
+
+                [Vue 三子棋](http://localhost:8082/)
+
+                ---
+
+                ## 4. Vue 模板语法
 
                 ### 主要特点 & 常用功能：
                 - XML语法
@@ -116,38 +130,90 @@
                 - `v-指令名：参数=值` 如 `v-on:click="add"`
 
                 修饰符：
-                - `@click.stop="add"` 阻止事件传播/冒泡
-                - `@click.prevent="add"` 阻止默认动作
+                - `@click.stop="add"` 阻止事件传播/冒泡，`e.stopPropagation()`
+                - `@click.prevent="add"` 阻止默认动作，`e.preventDefault()`
                 - `@click.stop.prevent="add"` 两者都阻止
 
-            </section>
-            <section data-markdown>
-                ## Vue 核心思想
+                ---
 
-                </script>
+                ## 5. Vue 构造选项
+
+                - data 内部数据，支持对象和函数，优先用函数
+                - methods 方法，包括事件处理函数或普通函数
+                - components 放组件，首字母大写
+                - 四个钩子：created mounted updated destroyed
+                - props 外部属性，需要传外部数据
+
+                ---
+
+                ## 6. Vue 进阶属性
+
+                - computed 计算属性：会缓存旧值，依赖变化才计算
+                - watch 监听属性：当依赖的 data 变化时执行一个异步回调函数
+                - [directive](https://codesandbox.io/s/trusting-aryabhata-25vd5) 自定义指令：用于减少重复的DOM操作
+                - [mixins](https://codesandbox.io/s/unruffled-mcclintock-8csco) 混入： 用来减少 options 里的重复
+
+                ---
+
+                ## 7. Vue Router 路由器
+
+                ```javascript
+                const routes = [
+                {
+                    path: '/',
+                    redirect: '/money'
+                },
+                {
+                    path: '/money',
+                    component: Money
+                }];
+                ```
+                ![VueRouter](./images/vueRouter.png)
+
+                ---
+
+                ## 8. Vue 打包
+                package.json 里找到如下配置：
+                ```bash
+                "scripts": {
+                "serve": "vue-cli-service serve",
+                "build": "vue-cli-service build",
+                "test:unit": "vue-cli-service test:unit",
+                "lint": "vue-cli-service lint"
+                }
+                ```
+                打包指令：
+                ```bash
+                yarn build
+                ```
+                打包完成会生成 /dist 目录，服务器部署即可
+
+                ---
+
+                ### Vue 数据响应式的实现
+
+                [实验](https://codesandbox.io/s/suspicious-allen-su8mf?file=/src/main.js)
+
+                --
+
+                ![Vue响应式原理](./images/vueDataRender.png)
+
+                --
+
+                现在再来回到我们的 [+1 demo](http://localhost:8081/)
+
+                知道为什么data改变，页面会重新渲染了吧
+
+                ---
+
+                ## 未完待续，再次感谢！
 
             </section>
-            <section data-markdown>
-                ## Vue 构造选项
-            </section>
-            <section data-markdown>
-                ## Vue 模板
-            </section>
-            <section data-markdown>
-                ## Vue 数据响应式
-            </section>
-            <section data-markdown>
+            <!-- ## Vue 数据响应式
                 ## Vue 高级属性
-            </section>
-            <section data-markdown>
                 ## computed && watch
-            </section>
-            <section data-markdown>
                 ## directives && mixins
-            </section>
-            <section data-markdown>
-                ## provide && inject
-            </section>
+                ## provide && inject -->
         </div>
     </div>
 
